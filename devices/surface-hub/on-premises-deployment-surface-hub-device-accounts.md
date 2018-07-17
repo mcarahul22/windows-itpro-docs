@@ -36,8 +36,15 @@ If you have a single-forest on-premises deployment with Microsoft Exchange 2013 
 
 2.  After establishing a session, you’ll either create a new mailbox and enable it as a RoomMailboxAccount, or change the settings for an existing room mailbox. This will allow the account to authenticate into the Surface Hub.
 
-    If you're changing an existing resource mailbox:
 
+
+    If you're changing an existing resource mailbox:
+    
+    ```PowerShell
+    Set-Mailbox -Identity "HUB01" -Type Room
+    ```
+   Reset Password role is required for directly changing password.  
+   
     ```PowerShell
     Set-Mailbox -Identity 'HUB01' -EnableRoomMailboxAccount $true -RoomMailboxPassword (ConvertTo-SecureString -String <password> -AsPlainText -Force)
     ```
